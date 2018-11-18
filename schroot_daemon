@@ -1,0 +1,103 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          schroot
+# Required-Start:    $syslog $time $remote_fs
+# Required-Stop:     $syslog $time $remote_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+### END INIT INFO
+
+#******************************************************************************
+# File : /etc/init.d/schrootlamp
+#
+# update-rc.d schrootlamp start 30 2 . stop 30 0 6 .
+#
+# Date create : Mon Nov  1 16:01:09 2010
+# Description : démarrer de façon automatique la chroot et tout les services
+#		que vous désiré
+#******************************************************************************
+
+. /lib/lsb/init-functions
+
+NAMESCRIPT="schrootmars"
+TEMPFILE="/var/run/$NAMESCRIPT.temp"
+
+check_root()  {
+    if [ "$(id -u)" != "0" ]; then
+        log_failure_msg "You must be root to start, stop or restart $NAME."
+        exit 4
+    fi
+}
+
+case $1 in 
+ start)
+	check_root
+	log_daemon_msg "Starting configuration" $NAMESCRIPT
+
+	if [ -e "$TEMPFILE" ]; then
+		log_progress_msg "...already running)"
+		log_end_msg 1
+	else
+		SCHROOT_ID=$(schroot -b -c mars)
+
+#		schroot -r -c $SCHROOT_ID /etc/init.d/mtab.sh		
+#		schroot -r -c $SCHROOT_ID /etc/init.d/squid start
+#		schroot -r -c $SCHROOT_ID /etc/init.d/samba start
+		schroot -r -c $SCHROOT_ID /etc/init.d/postgresql start
+		schroot -r -c $SCHROOT_ID /etc/init.d/nginx start
+		schroot -r -c $SCHROOT_ID /etc/init.d/php5-fpm start
+#		schroot -r -c $SCHROOT_ID /etc/init.d/mysql start
+#		schroot -r -c $SCHROOT_ID /etc/init.d/apache2 start
+
+		echo $SCHROOT_ID > $TEMPFILE
+		log_end_msg 0
+	fi
+
+	;;
+ stop)
+	check_root
+	log_daemon_msg  "Stopping configuration" $NAMESCRIPT
+
+	if [ -e "$TEMPFILE" ]; then
+		SCHROOT_ID=$(cat $TEMPFILE)
+#		schroot -r -c $SCHROOT_ID /etc/init.d/apache2 stop
+		schroot -r -c $SCHROOT_ID /etc/init.d/php5-fpm stop
+		schroot -r -c $SCHROOT_ID /etc/init.d/nginx stop
+		schroot -r -c $SCHROOT_ID /etc/init.d/postgresql stop
+#		schroot -r -c $SCHROOT_ID /etc/init.d/mysql stop
+#		schroot -r -c $SCHROOT_ID /etc/init.d/samba stop
+#		schroot -r -c $SCHROOT_ID /etc/init.d/squid stop
+		schroot -e -c $SCHROOT_ID
+		for ID in `ls /var/lib/schroot/session/`
+		do
+			schroot -e -c $ID
+		done
+
+		rm -R $TEMPFILE
+		log_end_msg 0
+	else
+		log_warning_msg "No running $NAMESCRIPT instance found"
+		log_end_msg 1
+	fi
+
+	;;
+ restart)
+	check_root
+	log_daemon_msg  "restarting configuration" $NAMESCRIPT
+	do_stop
+	do_start
+	log_end_msg 0
+	;;
+ status)
+	check_root
+	if [ ! -e "$TEMPFILE" ]; then
+		echo "$NAMESCRIPT isn't running"
+	elif [ -e "$TEMPFILE" ]; then
+		SCHROOT_ID=$(cat $TEMPFILE)
+		echo "$NAMESCRIPT is running : $SCHROOT_ID"
+	fi
+	;;
+     *)
+	log_daemon_msg  "./$NAMESCRIPT [start|stop|restart|status]"
+	;;
+esac
