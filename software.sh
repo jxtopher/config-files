@@ -31,7 +31,7 @@ sudo apt-get install -y mplayer gnome-mplayer soundconverter
 
 #sudo apt-get install -y conky
 #sudo apt-get install -y alltray keepassx
-sudo apt-get install -y gimp #blender
+sudo apt-get install -y gimp krita #blender
 sudo apt-get install -y rar unrar
 sudo apt-get install -y screen
 
