@@ -16,7 +16,7 @@ directories = ["Development", "Office", "Adminsys", "Science", "Multimedia", "Cr
 
 for dir in directories:
     try: 
-    os.makedirs(repertoire)
+        os.makedirs(repertoire)
     except OSError:
         if not os.path.isdir(repertoire):
             print("[-] Error")
