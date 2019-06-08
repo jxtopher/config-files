@@ -14,7 +14,7 @@ import os
 directories = ["Development", "Office", "Adminsys", "Science", "Multimedia", "Cryptography", "Browsers", "Computer-aided design"]
 
 
-for dir in directories:
+for repertoire in directories:
     try: 
         os.makedirs(repertoire)
     except OSError:
