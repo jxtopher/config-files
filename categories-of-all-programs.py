@@ -11,7 +11,7 @@
 
 import os
 
-directories = ["Development", "Office", "Adminsys", "Science", "Multimedia", "Cryptography", "Browsers", "Computer-aided design"]
+directories = ["Development", "Office", "Adminsys", "Science", "Multimedia", "Cryptography", "Browsers", "Computer-aided-design"]
 
 
 for repertoire in directories:
