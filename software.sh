@@ -67,22 +67,22 @@ echo "+--------------------------------------------------------+"
 #sudo apt-get install -y k3b
 
 echo "+--------------------------------------------------------+"
-echo "|  			kdbg			                                       |"
+echo "|  			kdbg                                             |"
 echo "+--------------------------------------------------------+"
 #sudo apt-get install -y kdbg
 
 echo "+--------------------------------------------------------+"
-echo "|  			ghex			                                       |"
+echo "|  			ghex                                             |"
 echo "+--------------------------------------------------------+"
 sudo apt-get install -y ghex
 
 #echo "+--------------------------------------------------------+"
-#echo "|  	       	     virtualbox			                        |"
+#echo "|  	       	     virtualbox                             |"
 #echo "+--------------------------------------------------------+"
 #sudo apt-get install -y virtualbox-ose
 
 echo "+--------------------------------------------------------+"
-echo "|  			ghex			                                       |"
+echo "|  			ghex                                             |"
 echo "+--------------------------------------------------------+"
 sudo apt-get install -y texlive-base texlive-fonts-recommended-doc texlive-fonts-recommended texlive-full texlive-generic-recommended texlive-latex-base-doc texlive-latex-base texlive-latex-recommended-doc texlive-latex-recommended texlive-luatex texlive-metapost-doc texlive-metapost texlive-omega texlive-pictures-doc texlive-pictures texlive-xetex texlive texlive-binaries texlive-doc-base texlive-doc-en texlive-doc-fr texlive-bibtex-extra texlive-extra-utils texlive-font-utils texlive-fonts-extra-doc texlive-fonts-extra texlive-formats-extra texlive-games texlive-generic-extra texlive-humanities-doc texlive-humanities texlive-latex-extra-doc texlive-latex-extra texlive-latex3 texlive-math-extra texlive-music texlive-plain-extra texlive-pstricks-doc texlive-pstricks texlive-publishers-doc texlive-publishers texlive-science-doc texlive-science texlive-lang-all
 sudo apt-get install -y wordnet
