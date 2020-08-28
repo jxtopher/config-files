@@ -1,0 +1,11 @@
+version: '3.2'
+services:
+        dns-server:
+                build: .
+                restart: always
+                volumes:
+                        - "./config/etc/bind:/etc/bind:rw"
+                ports:
+                        - "53:53/udp"
+                        - "53:53/tcp"
+                        - "10000:10000/tcp"
