@@ -1,10 +1,8 @@
 #!/bin/bash 
 
-sudo -s
-
 ## Installing the packages
-apt-get update
-apt-get install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev
+sudo apt-get update
+sudo apt-get install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev
 
 ## Download, complie, install
 cd /tmp
