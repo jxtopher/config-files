@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-sudo -s
+su
 
 ## Installing the packages
 apt-get update
