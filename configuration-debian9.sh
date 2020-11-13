@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Installation de paquet linux
-apt-get install sudo vim screen htop strace ltrace wireshark build-essential cmake chromium gedit emacs
+apt-get install sudo vim screen net-tools htop strace ltrace wireshark build-essential cmake chromium gedit emacs
 
 ## Élévation des privilèges sans mot de passe. Ajouter dans le fichier /etc/sudoers la ligne suivante :
 chmod 644 /etc/sudoers
