@@ -8,6 +8,7 @@ sudo apt-get install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libn
 cd /tmp
 wget https://www.python.org/ftp/python/3.9.0/Python-3.9.0.tgz
 tar xzf Python-3.9.0.tgz
+cd Python-3.9.0
 ./configure --enable-optimizations
 make -j 4
 sudo make altinstall
